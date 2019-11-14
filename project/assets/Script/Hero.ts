@@ -26,9 +26,9 @@ export default class Hero extends cc.Component {
     private accRight = false;
     private accJump = false;
 
-    private maxMoveSpeed = 400;
-    private accel = 100;
-    private xSpeed =100;
+    private maxMoveSpeed = 100;
+    private accel = 80;
+    private xSpeed =0;
 
     // LIFE-CYCLE CALLBACKS:
 
@@ -49,6 +49,7 @@ export default class Hero extends cc.Component {
         switch (event.keyCode) {
             case cc.macro.KEY.a:
                 this.accLeft = false;
+                // this.
                 break;
             case cc.macro.KEY.d:
                 this.accRight = false;
@@ -73,24 +74,28 @@ export default class Hero extends cc.Component {
     update(dt) {
         // 根据当前加速度方向每帧更新速度
         if (this.accLeft) {
-            // this.xSpeed -= this.accel * dt;
+            this.xSpeed -= this.accel * dt;
             // this.node.x += this.xSpeed * dt;
-            this.node.x -= this.xSpeed * dt;
+            // this.node.x -= this.xSpeed * dt;
 
 
 
         } else if (this.accRight) {
-            this.node.x += this.xSpeed * dt;
+            // this.node.x += this.xSpeed * dt;
 
-            // this.xSpeed += this.accel * dt;
+            this.xSpeed += this.accel * dt;
+            // this.node.x += this.xSpeed * dt;
         }
         // // 限制主角的速度不能超过最大值
-        // if (Math.abs(this.xSpeed) > this.maxMoveSpeed) {
-        //     // if speed reach limit, use max speed with current direction
-        //     this.xSpeed = this.maxMoveSpeed * this.xSpeed / Math.abs(this.xSpeed);
-        // }
+        if (Math.abs(this.xSpeed) > this.maxMoveSpeed) {
+            // if speed reach limit, use max speed with current direction
+            this.xSpeed = this.maxMoveSpeed * this.xSpeed / Math.abs(this.xSpeed);
+        }
 
         // // 根据当前速度更新主角的位置
-        // this.node.x += this.xSpeed * dt;
+        
+        this.node.x += this.xSpeed * dt;
+
+        
     }
 }

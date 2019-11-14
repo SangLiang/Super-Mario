@@ -35,5 +35,4 @@ export default class GameManager extends cc.Component {
 
     }
 
-    // update (dt) {}
 }
