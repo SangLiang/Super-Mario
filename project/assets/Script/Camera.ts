@@ -11,29 +11,17 @@
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class GameManager extends cc.Component {
+export default class Camera extends cc.Component {
 
-    @property(cc.Label)
-    label: cc.Label = null;
-
-    @property
-    text: string = 'hello';
-
-    // LIFE-CYCLE CALLBACKS:
-
-    onLoad () {
-        cc.director.getPhysicsManager().enabled = true;
-
-        var Bits = cc.PhysicsManager.DrawBits;
-
-        cc.director.getPhysicsManager().debugDrawFlags = Bits.e_jointBit | Bits.e_shapeBit;
-
-        cc.log(111);
-    }
+    @property(cc.Node)
+    player: cc.Node = null;
 
     start () {
-
+        console.log(this.player)
+        console.log(this)
     }
 
-    // update (dt) {}
+    update (dt) {
+        this.node.x = this.player.position.x;
+    }
 }
