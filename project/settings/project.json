@@ -2,12 +2,12 @@
   "assets-sort-type": "name",
   "collision-matrix": [
     [
-      false,
+      true,
       true
     ],
     [
       true,
-      false
+      true
     ]
   ],
   "design-resolution-height": 640,

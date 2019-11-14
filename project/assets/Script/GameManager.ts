@@ -21,7 +21,10 @@ export default class NewClass extends cc.Component {
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {}
+    onLoad () {
+        cc.director.getPhysicsManager().enabled = true;
+        cc.log(111);
+    }
 
     start () {
 
