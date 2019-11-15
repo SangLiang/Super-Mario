@@ -13,13 +13,11 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class GameManager extends cc.Component {
 
-    @property(cc.Label)
-    label: cc.Label = null;
+    // @property(cc.Label)
+    // label: cc.Label = null;
 
-    @property
-    text: string = 'hello';
-
-    // LIFE-CYCLE CALLBACKS:
+    // @property
+    // text: string = 'hello';
 
     onLoad () {
         cc.director.getPhysicsManager().enabled = true;
@@ -28,7 +26,6 @@ export default class GameManager extends cc.Component {
 
         cc.director.getPhysicsManager().debugDrawFlags = Bits.e_jointBit | Bits.e_shapeBit;
 
-        cc.log(111);
     }
 
     start () {
