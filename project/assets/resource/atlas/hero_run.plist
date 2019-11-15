@@ -4,6 +4,66 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>jump_1.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{21,27}</string>
+                <key>spriteSourceSize</key>
+                <string>{21,27}</string>
+                <key>textureRect</key>
+                <string>{{16,47},{21,27}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>jump_2.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{16,27}</string>
+                <key>spriteSourceSize</key>
+                <string>{16,27}</string>
+                <key>textureRect</key>
+                <string>{{0,47},{16,27}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>jump_3.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{19,23}</string>
+                <key>spriteSourceSize</key>
+                <string>{19,23}</string>
+                <key>textureRect</key>
+                <string>{{19,22},{19,23}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>jump_4.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{17,18}</string>
+                <key>spriteSourceSize</key>
+                <string>{17,18}</string>
+                <key>textureRect</key>
+                <string>{{0,0},{17,18}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
             <key>run_1.png</key>
             <dict>
                 <key>aliases</key>
@@ -15,7 +75,7 @@
                 <key>spriteSourceSize</key>
                 <string>{22,25}</string>
                 <key>textureRect</key>
-                <string>{{0,0},{22,25}}</string>
+                <string>{{38,22},{22,25}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -30,7 +90,7 @@
                 <key>spriteSourceSize</key>
                 <string>{21,21}</string>
                 <key>textureRect</key>
-                <string>{{0,25},{21,21}}</string>
+                <string>{{17,0},{21,21}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -45,7 +105,7 @@
                 <key>spriteSourceSize</key>
                 <string>{19,23}</string>
                 <key>textureRect</key>
-                <string>{{0,46},{19,23}}</string>
+                <string>{{0,22},{19,23}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -60,7 +120,7 @@
                 <key>spriteSourceSize</key>
                 <string>{19,22}</string>
                 <key>textureRect</key>
-                <string>{{0,69},{19,22}}</string>
+                <string>{{38,0},{19,22}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -76,9 +136,9 @@
             <key>realTextureFileName</key>
             <string>hero_run.png</string>
             <key>size</key>
-            <string>{22,91}</string>
+            <string>{74,74}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:c38a7d1904451ec846483f99fdd4e4b8:5f4ce65d0300725ad7c917be7b24eb89:3f8b73a0bf6f599bc97e9c873bd27ba9$</string>
+            <string>$TexturePacker:SmartUpdate:f2caf3edcfaa0f34bc39985c93f919ad:ae2642ac3e2f01dd91b33196a769d3b8:3f8b73a0bf6f599bc97e9c873bd27ba9$</string>
             <key>textureFileName</key>
             <string>hero_run.png</string>
         </dict>

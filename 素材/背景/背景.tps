@@ -84,7 +84,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
-        <uint>0</uint>
+        <uint>2</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -108,7 +108,7 @@
             <key>sizeConstraints</key>
             <enum type="AlgorithmSettings::SizeConstraints">AnySize</enum>
             <key>forceSquared</key>
-            <false/>
+            <true/>
             <key>maxRects</key>
             <struct type="AlgorithmMaxRectsSettings">
                 <key>heuristic</key>
@@ -187,7 +187,14 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">background.png</key>
+            <key type="filename">block_1.png</key>
+            <key type="filename">block_2.png</key>
+            <key type="filename">block_3.png</key>
+            <key type="filename">block_4.png</key>
+            <key type="filename">block_empty_1.png</key>
+            <key type="filename">block_empty_2.png</key>
+            <key type="filename">block_empty_3.png</key>
+            <key type="filename">block_empty_4.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -196,9 +203,115 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>78,21,157,41</rect>
+                <rect>4,4,8,8</rect>
                 <key>scale9Paddings</key>
-                <rect>78,21,157,41</rect>
+                <rect>4,4,8,8</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">cloud_1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>8,6,17,13</rect>
+                <key>scale9Paddings</key>
+                <rect>8,6,17,13</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">cloud_2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>12,6,25,13</rect>
+                <key>scale9Paddings</key>
+                <rect>12,6,25,13</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">cloud_3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,6,32,13</rect>
+                <key>scale9Paddings</key>
+                <rect>16,6,32,13</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">cloud_4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>40,6,80,13</rect>
+                <key>scale9Paddings</key>
+                <rect>40,6,80,13</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">coin_1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>3,4,6,8</rect>
+                <key>scale9Paddings</key>
+                <rect>3,4,6,8</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">coin_2.png</key>
+            <key type="filename">coin_4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>2,4,4,8</rect>
+                <key>scale9Paddings</key>
+                <rect>2,4,4,8</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">coin_3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1,4,2,8</rect>
+                <key>scale9Paddings</key>
+                <rect>1,4,2,8</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -311,6 +424,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">tree_3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>33,20,65,41</rect>
+                <key>scale9Paddings</key>
+                <rect>33,20,65,41</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
         </map>
         <key>fileList</key>
         <array>
@@ -319,13 +447,29 @@
             <filename>pip_1.png</filename>
             <filename>tree_1.png</filename>
             <filename>ground_2.png</filename>
-            <filename>background.png</filename>
             <filename>stone_1.png</filename>
             <filename>stone_2.png</filename>
             <filename>stone_3.png</filename>
             <filename>stone_4.png</filename>
             <filename>stone_5.png</filename>
             <filename>stone_6.png</filename>
+            <filename>tree_3.png</filename>
+            <filename>cloud_1.png</filename>
+            <filename>cloud_2.png</filename>
+            <filename>cloud_3.png</filename>
+            <filename>cloud_4.png</filename>
+            <filename>block_2.png</filename>
+            <filename>block_3.png</filename>
+            <filename>block_4.png</filename>
+            <filename>block_empty_1.png</filename>
+            <filename>block_empty_2.png</filename>
+            <filename>block_empty_3.png</filename>
+            <filename>block_empty_4.png</filename>
+            <filename>coin_1.png</filename>
+            <filename>coin_2.png</filename>
+            <filename>coin_3.png</filename>
+            <filename>coin_4.png</filename>
+            <filename>block_1.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -13,7 +13,12 @@ export default class Hero extends cc.Component {
     private xSpeed =80;
 
     private ani:cc.Animation = null;
+
     private isRun = false;
+    private isJump  = false;
+    private canJump = true;
+
+    private target:Number = 0;
 
     onKeyDown(event) {
         switch (event.keyCode) {
@@ -24,6 +29,9 @@ export default class Hero extends cc.Component {
             case cc.macro.KEY.d:
                 this.accRight = true;
                 this.playRightAnimation();
+                break;
+            case cc.macro.KEY.space:
+                this.jump();
                 break;
         }
     }
@@ -63,7 +71,7 @@ export default class Hero extends cc.Component {
         }
         var self = this;
         let _clipName = this.ani.getClips()[0].name
-        this.ani.play(_clipName);
+        this.ani.play('hero_run');
         this.isRun = true;
        
     }
@@ -74,9 +82,26 @@ export default class Hero extends cc.Component {
             this.node.scaleX *= -1;
         }
         var self = this;
-        let _clipName = this.ani.getClips()[0].name
-        this.ani.play(_clipName);
+        let _clipName = this.ani.getClips()[0].name;
+        this.ani.play('hero_run');
         this.isRun = true;
+    }
+
+    jump(){
+
+        this.target = this.node.position.y + 20;
+
+        var self = this;
+        this.canJump = true;
+        let _clipName = this.ani.getClips()[1].name;
+        this.ani.play('hero_jump');
+
+        let action = cc.moveTo(0.5, this.node.position.x, this.node.position.y +100)
+
+        // 执行动作，所有的动作都需要一个目标通过 runAction 去执行它
+
+        this.node.runAction(action)
+      
     }
 
     private stopAnimation(){
@@ -93,6 +118,20 @@ export default class Hero extends cc.Component {
             this.node.x -= this.xSpeed * dt;
         } else if (this.accRight) {
             this.node.x += this.xSpeed * dt;
+        }
+
+        if(this.canJump){
+            if(this.target == 0 ) return ;
+
+            // if(this.node.y < this.target){
+            //     this.node.y += 3.5;
+            //     cc.log(222);
+            // }else {
+            //     cc.log(111);
+            //     this.target = 0;
+            //     this.canJump = false;
+            //     cc.log(this.canJump);
+            // }
         }
     }
 }

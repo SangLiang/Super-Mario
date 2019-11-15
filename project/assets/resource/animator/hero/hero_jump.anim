@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "hero_jump",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.11666666666666667,
+  "sample": 60,
+  "speed": 0.3,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "e9486d42-a808-4c89-80e7-367257ae74b4"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "aea20a9e-a2b9-42d9-9a98-51634d402907"
+            }
+          },
+          {
+            "frame": 0.06666666666666667,
+            "value": {
+              "__uuid__": "864f91b4-9f9e-4e4e-a61d-3db30a6ae3dd"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "b0642a08-5106-437b-b4b1-bda0cc9ebfab"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
