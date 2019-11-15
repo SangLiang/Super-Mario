@@ -13,12 +13,6 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class Hero extends cc.Component {
 
-    // @property(cc.Label)
-    // label: cc.Label = null;
-
-    // @property
-    // text: string = 'hello';
-
     // 生命值
     private HP: number = 1;
 
@@ -28,74 +22,82 @@ export default class Hero extends cc.Component {
 
     private maxMoveSpeed = 100;
     private accel = 80;
-    private xSpeed =0;
+    private xSpeed =80;
 
-    // LIFE-CYCLE CALLBACKS:
+    private ani:cc.Animation = null;
+    private isRun = false;
 
     onKeyDown(event) {
-        // set a flag when key pressed
-        cc.log('键盘按下');
         switch (event.keyCode) {
             case cc.macro.KEY.a:
                 this.accLeft = true;
                 break;
             case cc.macro.KEY.d:
                 this.accRight = true;
+                this.playRightAnimation();
                 break;
         }
     }
 
     onKeyUp(event) {
+        // let _clipName = this.ani.getClips()[0].name
+        // this.ani.stop(_clipName);
+        // console.log(_clipName)
+        // cc.log('动画停下来');
         switch (event.keyCode) {
             case cc.macro.KEY.a:
                 this.accLeft = false;
-                // this.
                 break;
             case cc.macro.KEY.d:
                 this.accRight = false;
+                this.stopAnimation();
+                this.isRun  =false;
+
+                cc.log(this.isRun)
+
                 break;
         }
     }
-
-    // moveLeft() {
-    //     console.log(111);
-    //     this.node.setPosition(this.node.position.x - 10, this.node.position.y);
-    // }
 
     onLoad() {
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+
+        this.ani = this.getComponent(cc.Animation);
+    }
+
+    onDestroy (){
+        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
+        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+    }
+
+    private playRightAnimation(){
+        if(this.isRun) return ;
+        var self = this;
+        let _clipName = this.ani.getClips()[0].name
+        this.ani.play(_clipName);
+        this.isRun = true;
+        //  this.ani.on('stop',function(){
+        //     if(self.accRight == false) return;
+        //     self.ani.play(_clipName);
+        // })
+    }
+
+    private stopAnimation(){
+        if(!this.isRun) return;
+        cc.log(123)
+        this.ani.stop();
     }
 
     start() {
-
+       
     }
 
     update(dt) {
-        // 根据当前加速度方向每帧更新速度
         if (this.accLeft) {
-            this.xSpeed -= this.accel * dt;
-            // this.node.x += this.xSpeed * dt;
-            // this.node.x -= this.xSpeed * dt;
-
-
-
+            this.node.x -= this.xSpeed * dt;
         } else if (this.accRight) {
-            // this.node.x += this.xSpeed * dt;
-
-            this.xSpeed += this.accel * dt;
-            // this.node.x += this.xSpeed * dt;
+            this.node.x += this.xSpeed * dt;
         }
-        // // 限制主角的速度不能超过最大值
-        if (Math.abs(this.xSpeed) > this.maxMoveSpeed) {
-            // if speed reach limit, use max speed with current direction
-            this.xSpeed = this.maxMoveSpeed * this.xSpeed / Math.abs(this.xSpeed);
-        }
-
-        // // 根据当前速度更新主角的位置
-        
-        this.node.x += this.xSpeed * dt;
-
-        
     }
 }

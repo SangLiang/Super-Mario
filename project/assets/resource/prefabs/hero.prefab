@@ -120,7 +120,9 @@
       "__id__": 1
     },
     "_enabled": true,
-    "_defaultClip": null,
+    "_defaultClip": {
+      "__uuid__": "4fb84a6e-464a-4658-96c4-07a7acb0f454"
+    },
     "_clips": [
       {
         "__uuid__": "4fb84a6e-464a-4658-96c4-07a7acb0f454"
@@ -196,7 +198,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "5afb1ca9-5c6e-46cc-8f45-1cd142521c08"
+      "__uuid__": "4e33d412-fd4b-4013-ba71-8921ed5ed651"
     },
     "fileId": "69Nr8u4wVItp+QnkFtbY5P",
     "sync": false
