@@ -21,11 +21,13 @@ export default class Ground extends cc.Component implements IHeroLand{
 
     }
 
-    onBeginContact(contact,selfCollider,otherCollider:cc.Node){
+    onBeginContact(contact,selfCollider,otherCollider){
        
         var _hero = otherCollider.getComponent(Hero);
-        this.onHeroLand(_hero);
-        _hero.stopJumpAction();
+        if(otherCollider.node.group == 'hero'){
+            this.onHeroLand(_hero);
+            _hero.stopJumpAction();
+        }
     }
 
     onHeroLand(hero){
