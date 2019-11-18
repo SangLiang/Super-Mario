@@ -1,4 +1,4 @@
-import Hero from "../Hero";
+import Hero from "../../Hero";
 
 // Learn TypeScript:
 //  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/typescript.html
@@ -13,27 +13,24 @@ import Hero from "../Hero";
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class Block extends cc.Component {
+export default class BlockManager extends cc.Component {
+
+    @property(cc.Node)
+    topGround = null;
 
     // onLoad () {}
 
     start () {
-
-    }
-    // onCollisionEnter(other, self) {
-    //     var that = this;
-    //     // this.canvas.off(cc.Node.EventType.TOUCH_MOVE, this.move, this);
-    //     // this.underAttack();
-    //     // if(this.HP <=0){
-    //     //     cc.director.loadScene("gameOver");
-    //     // }
-    // }
-
-    onBeginContact(contact,selfCollider,otherCollider:cc.Node){
        
-        console.log(otherCollider);
+    }
+  
+    onBeginContact(contact,selfCollider,otherCollider){
+       
         var _hero = otherCollider.getComponent(Hero);
-        cc.log(_hero)
+
+        cc.log(selfCollider.node.x)
+        cc.log(otherCollider.node.x)
+        cc.log(selfCollider)
         _hero.stopJumpAction();
       
     }

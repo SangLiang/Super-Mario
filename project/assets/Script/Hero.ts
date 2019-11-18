@@ -10,7 +10,7 @@ export default class Hero extends cc.Component {
     private accRight = false;
     private accJump = false;
 
-    private xSpeed =80;
+    private xSpeed = 120;
 
     private ani:cc.Animation = null;
 
@@ -69,17 +69,20 @@ export default class Hero extends cc.Component {
     }
 
     onDestroy (){
+        cc.log('hero dead');
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+    }
+
+    private turnSide(){
+        this.node.scaleX  *= -1;
     }
 
     private playRightAnimation(){
         if(this.isRun) return ;
         if(this.node.scaleX < 0){
-            this.node.scaleX *= -1;
+            this.turnSide();
         }
-        var self = this;
-        let _clipName = this.ani.getClips()[0].name
         this.ani.play('hero_run');
         this.isRun = true;
     }
@@ -87,26 +90,34 @@ export default class Hero extends cc.Component {
     private playLeftAnimation(){
         if(this.isRun) return ;
         if(this.node.scaleX > 0){
-            this.node.scaleX *= -1;
+            this.turnSide();
         }
-        var self = this;
-        let _clipName = this.ani.getClips()[0].name;
         this.ani.play('hero_run');
         this.isRun = true;
     }
 
     jump(){
         if(!this.canJump ) return ;
-
+        this.isRun = false;
         this.canJump = false;
         this.ani.play('hero_jump');
         this.jumpAction = cc.moveTo(0.5, this.node.position.x, this.node.position.y +this.jumpStep);
         this.node.runAction(this.jumpAction);
     }
 
+    heroDead(){
+        this.node.destroy();
+    }
+
     // 角色落地后执行
     onLand(){
         this.canJump  = true;
+        
+        if(this.accLeft){
+            this.playLeftAnimation();
+        }else if(this.accRight){
+            this.playRightAnimation();
+        }
     }
 
     public stopJumpAction(){
@@ -118,15 +129,15 @@ export default class Hero extends cc.Component {
         this.ani.stop();
     }
 
-    start() {
-       
-    }
-
     update(dt) {
         if (this.accLeft) {
             this.node.x -= this.xSpeed * dt;
         } else if (this.accRight) {
             this.node.x += this.xSpeed * dt;
-        }       
+        } 
+        
+        if(this.node.position.y < -400){
+            this.heroDead();
+        }
     }
 }
