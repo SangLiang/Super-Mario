@@ -1,3 +1,5 @@
+import Hero from "../Hero";
+
 // Learn TypeScript:
 //  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/typescript.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/typescript.html
@@ -17,6 +19,23 @@ export default class Block extends cc.Component {
 
     start () {
 
+    }
+    // onCollisionEnter(other, self) {
+    //     var that = this;
+    //     // this.canvas.off(cc.Node.EventType.TOUCH_MOVE, this.move, this);
+    //     // this.underAttack();
+    //     // if(this.HP <=0){
+    //     //     cc.director.loadScene("gameOver");
+    //     // }
+    // }
+
+    onBeginContact(contact,selfCollider,otherCollider:cc.Node){
+       
+        console.log(otherCollider);
+        var _hero = otherCollider.getComponent(Hero);
+        cc.log(_hero)
+        _hero.stopJumpAction();
+      
     }
 
     // update (dt) {}

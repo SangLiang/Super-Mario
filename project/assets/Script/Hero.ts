@@ -15,10 +15,19 @@ export default class Hero extends cc.Component {
     private ani:cc.Animation = null;
 
     private isRun = false;
+
+    // 是否在起跳状态
     private isJump  = false;
+
     private canJump = true;
 
-    private target:Number = 0;
+    private target:number = 0;
+
+    // hero的跳起高度
+    private jumpStep:number = 150;
+
+    // 起跳动画
+    private jumpAction;
 
     onKeyDown(event) {
         switch (event.keyCode) {
@@ -73,7 +82,6 @@ export default class Hero extends cc.Component {
         let _clipName = this.ani.getClips()[0].name
         this.ani.play('hero_run');
         this.isRun = true;
-       
     }
 
     private playLeftAnimation(){
@@ -88,23 +96,24 @@ export default class Hero extends cc.Component {
     }
 
     jump(){
+        if(!this.canJump ) return ;
 
-        this.target = this.node.position.y + 20;
-
-        var self = this;
-        this.canJump = true;
-        let _clipName = this.ani.getClips()[1].name;
+        this.canJump = false;
         this.ani.play('hero_jump');
-
-        let action = cc.moveTo(0.5, this.node.position.x, this.node.position.y +100)
-
-        // 执行动作，所有的动作都需要一个目标通过 runAction 去执行它
-
-        this.node.runAction(action)
-      
+        this.jumpAction = cc.moveTo(0.5, this.node.position.x, this.node.position.y +this.jumpStep);
+        this.node.runAction(this.jumpAction);
     }
 
-    private stopAnimation(){
+    // 角色落地后执行
+    onLand(){
+        this.canJump  = true;
+    }
+
+    public stopJumpAction(){
+        this.node.stopAction(this.jumpAction);
+    }
+
+    public stopAnimation(){
         if(!this.isRun) return;
         this.ani.stop();
     }
@@ -118,20 +127,6 @@ export default class Hero extends cc.Component {
             this.node.x -= this.xSpeed * dt;
         } else if (this.accRight) {
             this.node.x += this.xSpeed * dt;
-        }
-
-        if(this.canJump){
-            if(this.target == 0 ) return ;
-
-            // if(this.node.y < this.target){
-            //     this.node.y += 3.5;
-            //     cc.log(222);
-            // }else {
-            //     cc.log(111);
-            //     this.target = 0;
-            //     this.canJump = false;
-            //     cc.log(this.canJump);
-            // }
-        }
+        }       
     }
 }
