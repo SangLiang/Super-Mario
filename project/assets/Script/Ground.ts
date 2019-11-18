@@ -26,7 +26,6 @@ export default class Ground extends cc.Component implements IHeroLand{
         var _hero = otherCollider.getComponent(Hero);
         this.onHeroLand(_hero);
         _hero.stopJumpAction();
-      
     }
 
     onHeroLand(hero){
