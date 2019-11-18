@@ -29,6 +29,8 @@ export default class Hero extends cc.Component {
     // 起跳动画
     private jumpAction;
 
+    private deadLine = -400;
+
     onKeyDown(event) {
         switch (event.keyCode) {
             case cc.macro.KEY.a:
@@ -130,14 +132,18 @@ export default class Hero extends cc.Component {
     }
 
     update(dt) {
+        this.move(dt);
+        
+        if(this.node.position.y < this.deadLine){
+            this.heroDead();
+        }
+    }
+
+    private move(dt){
         if (this.accLeft) {
             this.node.x -= this.xSpeed * dt;
         } else if (this.accRight) {
             this.node.x += this.xSpeed * dt;
         } 
-        
-        if(this.node.position.y < -400){
-            this.heroDead();
-        }
     }
 }

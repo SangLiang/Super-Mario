@@ -1,31 +1,45 @@
-// Learn TypeScript:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/typescript.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
+import Hero from "../Hero";
 
 const {ccclass, property} = cc._decorator;
 
-@ccclass
-export default class NewClass extends cc.Component {
+enum MoveDirect{
+    LEFT, RIGHT
+}
 
-    @property(cc.Label)
-    label: cc.Label = null;
+@ccclass
+export default class Enemy extends cc.Component {
 
     @property
-    text: string = 'hello';
+    moveDirect = MoveDirect.LEFT;
 
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {}
-
-    start () {
-
+    private xSpeed = 80;
+   
+    onLoad(){
+        if(this.moveDirect == MoveDirect.RIGHT){
+            this.turnSide();
+        }
     }
 
-    // update (dt) {}
+    onBeginContact(contact,selfCollider,otherCollider){
+        if(otherCollider.node.group == 'hero'){
+            otherCollider.node.destroy();
+        }
+    }
+
+    private move(dt){
+        if (this.moveDirect == MoveDirect.LEFT){
+            this.node.x -= this.xSpeed * dt;
+        }else if(this.moveDirect == MoveDirect.RIGHT){
+            this.node.x += this.xSpeed * dt;
+
+        }
+    }
+
+    private turnSide(){
+        this.node.scaleX  *= -1;
+    }
+
+    update (dt) {
+        this.move(dt);
+    }
 }
