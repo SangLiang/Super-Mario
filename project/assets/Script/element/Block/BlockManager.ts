@@ -21,7 +21,6 @@ export default class BlockManager extends cc.Component {
 
     onLoad () {
         this.ani = this.node.getComponent(cc.Animation);
-        cc.log(this.ani);
     }
 
 

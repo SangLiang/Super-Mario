@@ -24,7 +24,7 @@ export default class Hero extends cc.Component {
     private target:number = 0;
 
     // hero的跳起高度
-    private jumpStep:number = 120;
+    private jumpStep:number = 150;
 
     // 起跳动画
     private jumpAction;
@@ -104,15 +104,11 @@ export default class Hero extends cc.Component {
         this.isRun = false;
         this.canJump = false;
 
-        var body = this.node.getComponent(cc.RigidBody);
-        body.gravityScale = 0;
-
         this.ani.play('hero_jump');
 
-        this.jumpAction = cc.moveTo(0.4, this.node.position.x, this.node.position.y +this.jumpStep);
+        this.jumpAction = cc.moveTo(0.5, this.node.position.x, this.node.position.y +this.jumpStep);
 
         var end_func = cc.callFunc(function () {
-            body.gravityScale = 1;
         }.bind(this));
 
         var seq = cc.sequence([this.jumpAction, end_func]);
@@ -127,7 +123,9 @@ export default class Hero extends cc.Component {
     // 角色落地后执行
     onLand(){
         this.canJump  = true;
+
         cc.log('hero落地')
+
         if(this.accLeft){
             this.playLeftAnimation();
         }else if(this.accRight){
@@ -135,10 +133,17 @@ export default class Hero extends cc.Component {
         }
     }
 
+    // onBeginContact(contact,selfCollider,otherCollider){
+       
+    //     otherCollider.node.group == 
+        
+        
+    // }
+
     public stopJumpAction(){
-        var body = this.node.getComponent(cc.RigidBody);
-        body.gravityScale = 1;
-        this.node.stopAllActions();
+
+            cc.log('停止角色動畫');
+            this.node.stopAllActions();
     }
 
     public stopAnimation(){
