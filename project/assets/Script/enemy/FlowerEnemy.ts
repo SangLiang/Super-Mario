@@ -34,7 +34,7 @@ export default class FlowerEnemy extends cc.Component {
         this.isMove = true;
         var origin = this.node.position.y;
 
-        var ac = cc.moveTo(1, this.node.position.x, this.node.position.y + 60);
+        var ac = cc.moveTo(1.3, this.node.position.x, this.node.position.y + 60);
         var ac2 = cc.moveTo(1, this.node.position.x, origin);
 
         var end_func = cc.callFunc(function () {
