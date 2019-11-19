@@ -126,8 +126,9 @@ export default class Hero extends cc.Component {
             // this.node.active = false;
             
             setTimeout(()=>{
-                this.node.y = 200;
-                this.isAlive = true;
+                // this.node.y = 200;
+                // this.isAlive = true;
+                cc.director.loadScene("gameOver");
             },10)
         }catch(e){
             cc.error(e);
