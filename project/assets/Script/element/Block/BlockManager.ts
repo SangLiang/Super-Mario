@@ -7,8 +7,8 @@ enum ContactPosition { TOP, BOTTOM, OTHER };
 @ccclass
 export default class BlockManager extends cc.Component {
 
-    // @property(cc.Node)
-    // topGround = null;
+    @property(cc.Node)
+    coin: cc.Node = null;
 
     // onLoad () {}
     private originPostionY;
@@ -17,17 +17,14 @@ export default class BlockManager extends cc.Component {
 
     start() {
         this.originPostionY = this.node.y;
-        cc.log(this.originPostionY);
+        this.node.zIndex = 1;
+
     }
 
     onBeginContact(contact, selfCollider, otherCollider) {
 
         var _hero: Hero = otherCollider.getComponent(Hero);
-
-        cc.log(selfCollider.node.x)
-        cc.log(otherCollider.node.x)
-        cc.log(selfCollider)
-
+        cc.log(_hero);
         var contactPosition = this.getContactPosition(selfCollider, otherCollider);
 
         if (contactPosition == ContactPosition.TOP) {
@@ -51,11 +48,14 @@ export default class BlockManager extends cc.Component {
     }
 
     isInBottom(selfCollider, otherCollider) {
+        var parent = this.node.parent;
+        var objX = parent.x;
+        var objY = parent.y;
 
         // x位置判断
-        if (selfCollider.node.x + selfCollider.node.width > otherCollider.node.x && selfCollider.node.x - selfCollider.node.width < otherCollider.node.x) {
+        if (objX + selfCollider.node.width > otherCollider.node.x && objX - selfCollider.node.width < otherCollider.node.x) {
             // y 位置判断
-            if (selfCollider.node.y > otherCollider.node.y) {
+            if (objY > otherCollider.node.y) {
                 return true;
             } else {
                 return false;
@@ -66,10 +66,14 @@ export default class BlockManager extends cc.Component {
     }
 
     isInTop(selfCollider, otherCollider) {
+        var parent = this.node.parent;
+        var objX = parent.x;
+        var objY = parent.y;
+
         // x位置判断
-        if (selfCollider.node.x + selfCollider.node.width > otherCollider.node.x && selfCollider.node.x - selfCollider.node.width < otherCollider.node.x) {
+        if (objX + selfCollider.node.width > otherCollider.node.x && objX - selfCollider.node.width < otherCollider.node.x) {
             // y 位置判断
-            if (selfCollider.node.y < otherCollider.node.y) {
+            if (objY < otherCollider.node.y) {
                 return true;
             } else {
                 return false;
@@ -86,6 +90,7 @@ export default class BlockManager extends cc.Component {
 
         var _ac = cc.moveTo(0.1, this.node.position.x, this.originPostionY + 5);
         var _ac_2 = cc.moveTo(0.1, this.node.position.x, this.originPostionY);
+
 
         var end_func = cc.callFunc(function () {
             this.canbeScore = true;
