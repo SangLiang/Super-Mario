@@ -1,3 +1,5 @@
+import Hero from "../Hero";
+
 // Learn TypeScript:
 //  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/typescript.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/typescript.html
@@ -8,38 +10,35 @@
 //  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
 
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class FlowerEnemy extends cc.Component {
 
-    // @property(cc.Label)
-    // label: cc.Label = null;
+    private isMove = false;
 
-    // @property
-    // text: string = 'hello';
-
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {}
-
-    start () {
+    start() {
 
     }
-    onBeginContact(contact,selfCollider,otherCollider){
-       
-
-        cc.log('碰撞')
+    onBeginContact(contact, selfCollider, otherCollider) {
+        if (otherCollider.node.group == 'hero') {
+            var hero: Hero = otherCollider.getComponent(Hero);
+            if (hero.isAlive) {
+                hero.heroDead();
+            }
+        }
     }
 
-    move(){
+    move() {
+        if(this.isMove) return;
+        this.isMove = true;
         var origin = this.node.position.y;
 
         var ac = cc.moveTo(1, this.node.position.x, this.node.position.y + 60);
-        var ac2 = cc.moveTo(0.5, this.node.position.x, origin);
+        var ac2 = cc.moveTo(1, this.node.position.x, origin);
 
         var end_func = cc.callFunc(function () {
-
+            this.isMove = false;
         }.bind(this));
 
         var seq = cc.sequence([ac, ac2, end_func]);

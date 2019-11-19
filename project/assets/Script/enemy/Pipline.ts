@@ -24,7 +24,6 @@ export default class Pipline extends cc.Component {
     // onLoad () {}
     onBeginContact(contact,selfCollider,otherCollider){
         if(otherCollider.node.group == 'hero'){
-            // this.flowerEnemy.move();
             var flowerEnemy:FlowerEnemy = this.flowerEnemy.getComponent(FlowerEnemy);
             flowerEnemy.move();
         }

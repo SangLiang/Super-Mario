@@ -19,8 +19,11 @@ export default class BlockManager extends cc.Component {
 
     private ani:cc.Animation = null;
 
+    private scoreText:cc.Label = null;
+
     onLoad () {
         this.ani = this.node.getComponent(cc.Animation);
+        this.scoreText = cc.find('Canvas/UI/score_label/score_text').getComponent(cc.Label);
     }
 
 
@@ -128,6 +131,7 @@ export default class BlockManager extends cc.Component {
     onScore(){
         if(this.conisCount > 0){
             this.conisCount -= 1;
+            this.scoreText.string = (parseInt(this.scoreText.string) + 100).toString();
         }
 
         if(this.conisCount <= 0 ){
