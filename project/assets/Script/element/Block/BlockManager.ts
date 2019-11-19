@@ -10,21 +10,31 @@ export default class BlockManager extends cc.Component {
     @property(cc.Node)
     coin: cc.Node = null;
 
-    // onLoad () {}
+    @property()
+    conisCount = 1;
+
     private originPostionY;
 
     private canbeScore = true;
 
+    private ani:cc.Animation = null;
+
+    onLoad () {
+        this.ani = this.node.getComponent(cc.Animation);
+        cc.log(this.ani);
+    }
+
+
     start() {
         this.originPostionY = this.node.y;
         this.node.zIndex = 1;
+        this.ani.play('block_default');
 
     }
 
     onBeginContact(contact, selfCollider, otherCollider) {
 
         var _hero: Hero = otherCollider.getComponent(Hero);
-        cc.log(_hero);
         var contactPosition = this.getContactPosition(selfCollider, otherCollider);
 
         if (contactPosition == ContactPosition.TOP) {
@@ -32,6 +42,7 @@ export default class BlockManager extends cc.Component {
         } else if (contactPosition == ContactPosition.BOTTOM) {
             _hero.stopJumpAction();
             this.playScoreAction();
+            this.playScoreCoinAction();
         }
 
 
@@ -88,15 +99,45 @@ export default class BlockManager extends cc.Component {
         if (!this.canbeScore) return;
         this.canbeScore = false;
 
-        var _ac = cc.moveTo(0.1, this.node.position.x, this.originPostionY + 5);
-        var _ac_2 = cc.moveTo(0.1, this.node.position.x, this.originPostionY);
 
+        var _ac = cc.moveTo(0.2, this.node.position.x, this.originPostionY + 5);
+        var _ac2 = cc.moveTo(0.2, this.node.position.x, this.originPostionY);
+
+        this.onScore();
 
         var end_func = cc.callFunc(function () {
-            this.canbeScore = true;
+            if(this.conisCount > 0){
+                this.canbeScore = true;
+            }
         }.bind(this))
-        var seq = cc.sequence([_ac, _ac_2, end_func]);
+        var seq = cc.sequence([_ac, _ac2, end_func]);
         this.node.runAction(seq);
+
+    }
+
+    playScoreCoinAction (){
+        var _ac = cc.moveTo(0.4, this.node.position.x, this.originPostionY + 60); 
+        var _ac2 = cc.moveTo(0.3, this.node.position.x, this.originPostionY);
+
+        var end_func = cc.callFunc(function () {
+            this.coin.active = false;
+        }.bind(this))
+        var seq = cc.sequence([_ac, _ac2, end_func]);
+        this.coin.runAction(seq);
+    }
+
+    onScore(){
+        if(this.conisCount > 0){
+            this.conisCount -= 1;
+        }
+
+        if(this.conisCount <= 0 ){
+            this.playNocoinAnimation();
+        }
+    }
+
+    playNocoinAnimation(){
+        this.ani.play('block_empty');
     }
 
     // update (dt) {}

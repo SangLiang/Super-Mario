@@ -1,6 +1,6 @@
 {
   "__type__": "cc.AnimationClip",
-  "_name": "block_default",
+  "_name": "block_empty",
   "_objFlags": 0,
   "_native": "",
   "_duration": 0.15,
@@ -14,31 +14,31 @@
           {
             "frame": 0,
             "value": {
-              "__uuid__": "fa2da614-0f5c-401d-9ec9-d618382654e5"
+              "__uuid__": "5e489e50-0a11-4332-9495-09ebfbb25d30"
             }
           },
           {
             "frame": 0.03333333333333333,
             "value": {
-              "__uuid__": "bddf60c3-2240-440e-9537-c52656d2c056"
+              "__uuid__": "62d0164c-ecf7-48cc-b9d1-4d908c3637d5"
             }
           },
           {
             "frame": 0.06666666666666667,
             "value": {
-              "__uuid__": "6eb69818-c3f0-4df7-9ed7-8b06f948088f"
+              "__uuid__": "c88dcd3c-115d-4a3f-8f4b-daf2ca26b29e"
             }
           },
           {
             "frame": 0.1,
             "value": {
-              "__uuid__": "baa4743f-3a24-4439-b49d-b51d735a5a60"
+              "__uuid__": "8fc597ea-1513-4fc0-8fd1-8caeaec7463f"
             }
           },
           {
             "frame": 0.13333333333333333,
             "value": {
-              "__uuid__": "fa2da614-0f5c-401d-9ec9-d618382654e5"
+              "__uuid__": "5e489e50-0a11-4332-9495-09ebfbb25d30"
             }
           }
         ]

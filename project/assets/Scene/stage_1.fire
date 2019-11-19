@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 1.1337509230774419,
-      "y": 1.1337509230774419,
+      "x": 0.7169776240079135,
+      "y": 0.7169776240079135,
       "z": 1
     },
     "_quat": {
@@ -5377,7 +5377,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "groupIndex": 0,
+    "groupIndex": 1,
     "_id": "cdBZJjPl9Fb7AJkpj75V/Y"
   },
   {
@@ -5623,6 +5623,9 @@
     "_clips": [
       {
         "__uuid__": "0d792a44-aba7-4b7c-bea0-ff9915c5fa92"
+      },
+      {
+        "__uuid__": "82c67772-6282-43e4-b331-804b7281c75e"
       }
     ],
     "playOnLoad": true,
@@ -5639,6 +5642,7 @@
     "coin": {
       "__id__": 122
     },
+    "conisCount": 1,
     "_id": "bbFOAcQN5PSJAo5Sxrmr5A"
   },
   {

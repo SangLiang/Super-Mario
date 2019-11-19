@@ -17,8 +17,6 @@ export default class Camera extends cc.Component {
     player: cc.Node = null;
 
     start () {
-        console.log(this.player)
-        console.log(this)
     }
 
     update (dt) {

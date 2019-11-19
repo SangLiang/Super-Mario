@@ -70,7 +70,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "groupIndex": 0,
+    "groupIndex": 1,
     "_id": ""
   },
   {
@@ -316,6 +316,9 @@
     "_clips": [
       {
         "__uuid__": "0d792a44-aba7-4b7c-bea0-ff9915c5fa92"
+      },
+      {
+        "__uuid__": "82c67772-6282-43e4-b331-804b7281c75e"
       }
     ],
     "playOnLoad": true,
@@ -332,6 +335,7 @@
     "coin": {
       "__id__": 2
     },
+    "conisCount": 1,
     "_id": ""
   },
   {
