@@ -39,6 +39,7 @@ export default class BlockManager extends cc.Component {
 
         if (contactPosition == ContactPosition.TOP) {
             _hero.stopJumpAction();
+            this.makeHeroOnLand(_hero);
         } else if (contactPosition == ContactPosition.BOTTOM) {
             _hero.stopJumpAction();
             this.playScoreAction();
@@ -95,7 +96,6 @@ export default class BlockManager extends cc.Component {
     }
 
     playScoreAction() {
-
         if (!this.canbeScore) return;
         this.canbeScore = false;
 
@@ -134,6 +134,10 @@ export default class BlockManager extends cc.Component {
         if(this.conisCount <= 0 ){
             this.playNocoinAnimation();
         }
+    }
+
+    makeHeroOnLand(hero:Hero){
+        hero.onLand();
     }
 
     playNocoinAnimation(){

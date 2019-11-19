@@ -84,7 +84,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
-        <uint>2</uint>
+        <uint>4</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -315,6 +315,36 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemy2_attack_1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>8,11,15,23</rect>
+                <key>scale9Paddings</key>
+                <rect>8,11,15,23</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemy2_attack_2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>9,11,18,23</rect>
+                <key>scale9Paddings</key>
+                <rect>9,11,18,23</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">ground_1.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -342,6 +372,21 @@
                 <rect>12,4,24,8</rect>
                 <key>scale9Paddings</key>
                 <rect>12,4,24,8</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">home.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>13,12,25,24</rect>
+                <key>scale9Paddings</key>
+                <rect>13,12,25,24</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -470,6 +515,9 @@
             <filename>coin_3.png</filename>
             <filename>coin_4.png</filename>
             <filename>block_1.png</filename>
+            <filename>enemy2_attack_1.png</filename>
+            <filename>enemy2_attack_2.png</filename>
+            <filename>home.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

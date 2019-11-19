@@ -19,12 +19,12 @@ export default class Hero extends cc.Component {
     // 是否在起跳状态
     private isJump  = false;
 
-    private canJump = true;
+    public canJump = true;
 
     private target:number = 0;
 
     // hero的跳起高度
-    private jumpStep:number = 150;
+    private jumpStep:number = 120;
 
     // 起跳动画
     private jumpAction;
@@ -100,11 +100,24 @@ export default class Hero extends cc.Component {
 
     jump(){
         if(!this.canJump ) return ;
+
         this.isRun = false;
         this.canJump = false;
+
+        var body = this.node.getComponent(cc.RigidBody);
+        body.gravityScale = 0;
+
         this.ani.play('hero_jump');
-        this.jumpAction = cc.moveTo(0.5, this.node.position.x, this.node.position.y +this.jumpStep);
-        this.node.runAction(this.jumpAction);
+
+        this.jumpAction = cc.moveTo(0.4, this.node.position.x, this.node.position.y +this.jumpStep);
+
+        var end_func = cc.callFunc(function () {
+            body.gravityScale = 1;
+        }.bind(this));
+
+        var seq = cc.sequence([this.jumpAction, end_func]);
+
+        this.node.runAction(seq);
     }
 
     heroDead(){
@@ -114,7 +127,7 @@ export default class Hero extends cc.Component {
     // 角色落地后执行
     onLand(){
         this.canJump  = true;
-        
+        cc.log('hero落地')
         if(this.accLeft){
             this.playLeftAnimation();
         }else if(this.accRight){
@@ -123,7 +136,9 @@ export default class Hero extends cc.Component {
     }
 
     public stopJumpAction(){
-        this.node.stopAction(this.jumpAction);
+        var body = this.node.getComponent(cc.RigidBody);
+        body.gravityScale = 1;
+        this.node.stopAllActions();
     }
 
     public stopAnimation(){

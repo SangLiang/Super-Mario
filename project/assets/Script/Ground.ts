@@ -6,24 +6,23 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class Ground extends cc.Component implements IHeroLand{
 
-    // onLoad () {}
-
-    start () {
-
-    }
-
     onBeginContact(contact,selfCollider,otherCollider){
        
         var _hero = otherCollider.getComponent(Hero);
+        
         if(otherCollider.node.group == 'hero'){
-            this.onHeroLand(_hero);
+            this.onHeroLand(otherCollider);
             _hero.stopJumpAction();
         }
     }
 
-    onHeroLand(hero){
-        hero.onLand();
+    onHeroLand(otherCollider){
+        cc.log(otherCollider)
+        var _hero = otherCollider.getComponent(Hero);
+
+        if(_hero.canJump == false){
+            _hero.onLand();
+        }
     }
 
-    // update (dt) {}
 }
