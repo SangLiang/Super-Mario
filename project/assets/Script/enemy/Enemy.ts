@@ -5,6 +5,7 @@ const {ccclass, property} = cc._decorator;
 enum MoveDirect{
     LEFT, RIGHT
 }
+enum ContactPosition { TOP, BOTTOM, OTHER };
 
 @ccclass
 export default class Enemy extends cc.Component {
@@ -31,8 +32,39 @@ export default class Enemy extends cc.Component {
 
     onBeginContact(contact,selfCollider,otherCollider){
         if(otherCollider.node.group == 'hero'){
-            otherCollider.node.destroy();
+            var _pos =  this.getContactPosition(selfCollider,otherCollider);
+            if(_pos == ContactPosition.TOP){
+                this.node.destroy();
+            }else {
+                var hero:Hero = otherCollider.getComponent(Hero);
+                if(hero.isAlive){
+                    hero.heroDead();
+                }
+            }
         }
+    }
+
+    getContactPosition(selfCollider, otherCollider) {
+        if (this.isInTop(selfCollider, otherCollider)) {
+            return ContactPosition.TOP;
+        } else {
+            return ContactPosition.OTHER;
+        }
+    }
+
+    isInTop(selfCollider, otherCollider) {
+
+        // x位置判断
+        if (selfCollider.node.x + selfCollider.node.width > otherCollider.node.x && selfCollider.node.x - selfCollider.node.width < otherCollider.node.x) {
+            // y 位置判断
+            if (selfCollider.node.y < otherCollider.node.y) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        return false;
     }
 
     private move(dt){
@@ -49,6 +81,10 @@ export default class Enemy extends cc.Component {
     }
 
     moveController(){
+        if(!this.hero.active) return;
+        var _hero:Hero = this.hero.getComponent(Hero);
+        if(_hero.isAlive == false ) return ;
+
         if(Math.abs(this.node.x - this.hero.x) < this.warningRange){
             this.active = true;
         }else {

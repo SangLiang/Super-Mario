@@ -31,6 +31,8 @@ export default class Hero extends cc.Component {
 
     private deadLine = -400;
 
+    public isAlive = true;
+
     onKeyDown(event) {
         switch (event.keyCode) {
             case cc.macro.KEY.a:
@@ -68,6 +70,7 @@ export default class Hero extends cc.Component {
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
 
         this.ani = this.getComponent(cc.Animation);
+       
     }
 
     onDestroy (){
@@ -116,8 +119,20 @@ export default class Hero extends cc.Component {
         this.node.runAction(seq);
     }
 
-    heroDead(){
-        this.node.destroy();
+    public heroDead(){
+        cc.log('执行了hero dead')
+        this.isAlive = false;
+        try {
+            // this.node.active = false;
+            
+            setTimeout(()=>{
+                this.node.y = 200;
+                this.isAlive = true;
+            },10)
+        }catch(e){
+            cc.error(e);
+        }
+       
     }
 
     // 角色落地后执行
@@ -133,13 +148,7 @@ export default class Hero extends cc.Component {
         }
     }
 
-    // onBeginContact(contact,selfCollider,otherCollider){
-       
-    //     otherCollider.node.group == 
-        
-        
-    // }
-
+    
     public stopJumpAction(){
 
             cc.log('停止角色動畫');
@@ -160,6 +169,10 @@ export default class Hero extends cc.Component {
     }
 
     private move(dt){
+        if(!this.isAlive){
+            return;
+        }
+
         if (this.accLeft) {
             this.node.x -= this.xSpeed * dt;
         } else if (this.accRight) {
