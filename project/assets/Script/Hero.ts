@@ -33,12 +33,10 @@ export default class Hero extends cc.Component {
     onKeyDown(event) {
         switch (event.keyCode) {
             case cc.macro.KEY.a:
-                this.accLeft = true;
-                this.playLeftAnimation();
+                this.moveLeft();
                 break;
             case cc.macro.KEY.d:
-                this.accRight = true;
-                this.playRightAnimation();
+                this.moveRight();
                 break;
             case cc.macro.KEY.space:
                 this.jump();
@@ -49,15 +47,10 @@ export default class Hero extends cc.Component {
     onKeyUp(event) {
         switch (event.keyCode) {
             case cc.macro.KEY.a:
-                this.accLeft = false;
-                this.stopAnimation();
-                this.isRun = false;
-
+                this.stopMoveLeft();
                 break;
             case cc.macro.KEY.d:
-                this.accRight = false;
-                this.stopAnimation();
-                this.isRun = false;
+                this.stopMoveRight;
                 break;
         }
     }
@@ -97,7 +90,29 @@ export default class Hero extends cc.Component {
         this.isRun = true;
     }
 
-    jump() {
+    public moveLeft(){
+        this.accLeft = true;
+        this.playLeftAnimation();
+    }
+
+    public moveRight(){
+        this.accRight = true;
+        this.playRightAnimation();
+    }
+
+    public stopMoveLeft(){
+        this.accLeft = false;
+        this.stopAnimation();
+        this.isRun = false;
+    }
+
+    public stopMoveRight(){
+        this.accRight = false;
+        this.stopAnimation();
+        this.isRun = false;
+    }
+
+    public jump() {
         if (!this.canJump) return;
 
         this.isRun = false;

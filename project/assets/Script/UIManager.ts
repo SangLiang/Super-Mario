@@ -1,10 +1,11 @@
+import Hero from "./Hero";
 
 const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class UIManager extends cc.Component {
     @property(cc.Button)
-    leftButtom = null;
+    leftButtom:cc.Button = null;
 
     @property(cc.Button)
     rightButtom = null;
@@ -15,13 +16,38 @@ export default class UIManager extends cc.Component {
     @property(cc.Button)
     shootButtom = null;
 
-    // LIFE-CYCLE CALLBACKS:
+    private hero:Hero;
 
-    // onLoad () {}
+    onLoad () {
+        this.hero = cc.find('Canvas/hero').getComponent(Hero);
 
-    start () {
-        
+        this.leftButtom.node.on(cc.Node.EventType.TOUCH_START,this.moveLeft,this);
+        this.rightButtom.node.on(cc.Node.EventType.TOUCH_START,this.moveRight,this);
+
+        this.leftButtom.node.on(cc.Node.EventType.TOUCH_END,this.stopMoveLeft,this);
+        this.rightButtom.node.on(cc.Node.EventType.TOUCH_END,this.stopMoveRight,this);
+
+        this.jumpButtom.node.on(cc.Node.EventType.TOUCH_START,this.heroJump,this)
     }
 
-    // update (dt) {}
+    moveLeft(){
+        this.hero.moveLeft();
+    }
+
+    moveRight(){
+        this.hero.moveRight();
+    }
+
+    stopMoveLeft(){
+        this.hero.stopMoveLeft();
+    }
+
+    stopMoveRight(){
+        this.hero.stopMoveRight();
+    }
+
+    heroJump(){
+        this.hero.jump();
+    }
+    
 }
