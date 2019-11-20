@@ -30,6 +30,16 @@ export default class UIManager extends cc.Component {
         this.jumpButtom.node.on(cc.Node.EventType.TOUCH_START,this.heroJump,this)
     }
 
+    onDestroy(){
+        // this.leftButtom.node.off(cc.Node.EventType.TOUCH_START,this.moveLeft,this);
+        // this.rightButtom.node.off(cc.Node.EventType.TOUCH_START,this.moveRight,this);
+
+        // this.leftButtom.node.off(cc.Node.EventType.TOUCH_END,this.stopMoveLeft,this);
+        // this.rightButtom.node.off(cc.Node.EventType.TOUCH_END,this.stopMoveRight,this);
+
+        // this.jumpButtom.node.off(cc.Node.EventType.TOUCH_START,this.heroJump,this);
+    }
+
     moveLeft(){
         this.hero.moveLeft();
     }

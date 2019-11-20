@@ -50,7 +50,7 @@ export default class Hero extends cc.Component {
                 this.stopMoveLeft();
                 break;
             case cc.macro.KEY.d:
-                this.stopMoveRight;
+                this.stopMoveRight();
                 break;
         }
     }
