@@ -12,19 +12,19 @@ export default class Hero extends cc.Component {
 
     private xSpeed = 120;
 
-    private ani:cc.Animation = null;
+    private ani: cc.Animation = null;
 
     private isRun = false;
 
     // 是否在起跳状态
-    private isJump  = false;
+    private isJump = false;
 
     public canJump = true;
 
-    private target:number = 0;
+    private target: number = 0;
 
     // hero的跳起高度
-    private jumpStep:number = 150;
+    private jumpStep: number = 150;
 
     // 起跳动画
     private jumpAction;
@@ -54,13 +54,13 @@ export default class Hero extends cc.Component {
             case cc.macro.KEY.a:
                 this.accLeft = false;
                 this.stopAnimation();
-                this.isRun  =false;
+                this.isRun = false;
 
                 break;
             case cc.macro.KEY.d:
                 this.accRight = false;
                 this.stopAnimation();
-                this.isRun  =false;
+                this.isRun = false;
                 break;
         }
     }
@@ -70,46 +70,45 @@ export default class Hero extends cc.Component {
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
 
         this.ani = this.getComponent(cc.Animation);
-       
+
     }
 
-    onDestroy (){
-        cc.log('hero dead');
+    onDestroy() {
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
     }
 
-    private turnSide(){
-        this.node.scaleX  *= -1;
+    private turnSide() {
+        this.node.scaleX *= -1;
     }
 
-    private playRightAnimation(){
-        if(this.isRun) return ;
-        if(this.node.scaleX < 0){
+    private playRightAnimation() {
+        if (this.isRun) return;
+        if (this.node.scaleX < 0) {
             this.turnSide();
         }
         this.ani.play('hero_run');
         this.isRun = true;
     }
 
-    private playLeftAnimation(){
-        if(this.isRun) return ;
-        if(this.node.scaleX > 0){
+    private playLeftAnimation() {
+        if (this.isRun) return;
+        if (this.node.scaleX > 0) {
             this.turnSide();
         }
         this.ani.play('hero_run');
         this.isRun = true;
     }
 
-    jump(){
-        if(!this.canJump ) return ;
+    jump() {
+        if (!this.canJump) return;
 
         this.isRun = false;
         this.canJump = false;
 
         this.ani.play('hero_jump');
 
-        this.jumpAction = cc.moveTo(0.5, this.node.position.x, this.node.position.y +this.jumpStep);
+        this.jumpAction = cc.moveTo(0.5, this.node.position.x, this.node.position.y + this.jumpStep);
 
         var end_func = cc.callFunc(function () {
         }.bind(this));
@@ -119,58 +118,49 @@ export default class Hero extends cc.Component {
         this.node.runAction(seq);
     }
 
-    public heroDead(){
-        cc.log('执行了hero dead')
+    public heroDead() {
         this.isAlive = false;
         try {
-            // this.node.active = false;
-            
-            setTimeout(()=>{
-                // this.node.y = 200;
-                // this.isAlive = true;
+            setTimeout(() => {
                 cc.director.loadScene("gameOver");
-            },10)
-        }catch(e){
+            }, 10)
+        } catch (e) {
             cc.error(e);
         }
-       
+
     }
 
     // 角色落地后执行
-    onLand(){
-        this.canJump  = true;
+    onLand() {
+        this.canJump = true;
 
-        cc.log('hero落地')
-
-        if(this.accLeft){
+        if (this.accLeft) {
             this.playLeftAnimation();
-        }else if(this.accRight){
+        } else if (this.accRight) {
             this.playRightAnimation();
         }
     }
 
-    
-    public stopJumpAction(){
 
-            cc.log('停止角色動畫');
-            this.node.stopAllActions();
+    public stopJumpAction() {
+        this.node.stopAllActions();
     }
 
-    public stopAnimation(){
-        if(!this.isRun) return;
+    public stopAnimation() {
+        if (!this.isRun) return;
         this.ani.stop();
     }
 
     update(dt) {
         this.move(dt);
-        
-        if(this.node.position.y < this.deadLine){
+
+        if (this.node.position.y < this.deadLine) {
             this.heroDead();
         }
     }
 
-    private move(dt){
-        if(!this.isAlive){
+    private move(dt) {
+        if (!this.isAlive) {
             return;
         }
 
@@ -178,6 +168,6 @@ export default class Hero extends cc.Component {
             this.node.x -= this.xSpeed * dt;
         } else if (this.accRight) {
             this.node.x += this.xSpeed * dt;
-        } 
+        }
     }
 }

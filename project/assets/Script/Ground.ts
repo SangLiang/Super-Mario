@@ -17,7 +17,6 @@ export default class Ground extends cc.Component implements IHeroLand{
     }
 
     onHeroLand(otherCollider){
-        // cc.log(otherCollider)
         var _hero = otherCollider.getComponent(Hero);
 
         if(_hero.canJump == false){

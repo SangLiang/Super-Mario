@@ -25,7 +25,18 @@
   ],
   "design-resolution-height": 640,
   "design-resolution-width": 960,
-  "excluded-modules": [],
+  "excluded-modules": [
+    "ParticleSystem",
+    "TiledMap",
+    "Spine Skeleton",
+    "DragonBones",
+    "ScrollBar",
+    "ScrollView",
+    "Toggle",
+    "Slider",
+    "EditBox",
+    "Native Socket"
+  ],
   "facebook": {
     "appID": "",
     "audience": {
@@ -51,6 +62,5 @@
     "width": 960
   },
   "use-customize-simulator": true,
-  "use-project-simulator-setting": false,
-  "start-scene": "current"
+  "use-project-simulator-setting": false
 }

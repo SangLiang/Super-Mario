@@ -35,9 +35,9 @@
     "orientation": "portrait",
     "zip": false
   },
-  "startScene": "2d2f792f-a40c-49bb-a189-ed176a246e49",
-  "title": "hello_world",
-  "webOrientation": "auto",
+  "startScene": "cade2f56-4b7d-43e5-b0b0-0cb3de2a5d4a",
+  "title": "hello_mario",
+  "webOrientation": "landscape",
   "wechatgame": {
     "REMOTE_SERVER_ROOT": "",
     "appid": "wx6ac3f5090a6b99c5",
