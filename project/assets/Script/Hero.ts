@@ -8,7 +8,6 @@ export default class Hero extends cc.Component {
 
     private accLeft = false;
     private accRight = false;
-    private accJump = false;
 
     private xSpeed = 120;
 
@@ -20,8 +19,6 @@ export default class Hero extends cc.Component {
     private isJump = false;
 
     public canJump = true;
-
-    private target: number = 0;
 
     // hero的跳起高度
     private jumpStep: number = 150;
