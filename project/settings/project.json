@@ -21,6 +21,13 @@
       false,
       false,
       false
+    ],
+    [
+      false,
+      false,
+      false,
+      false,
+      false
     ]
   ],
   "design-resolution-height": 640,
@@ -58,7 +65,8 @@
     "hero",
     "ground",
     "enemy",
-    "camera"
+    "camera",
+    "UI"
   ],
   "last-module-event-record-time": 1574145223452,
   "simulator-orientation": false,
