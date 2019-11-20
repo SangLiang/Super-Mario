@@ -7,7 +7,6 @@ const {ccclass, property} = cc._decorator;
 export default class Ground extends cc.Component implements IHeroLand{
 
     onBeginContact(contact,selfCollider,otherCollider){
-       
         var _hero = otherCollider.getComponent(Hero);
         
         if(otherCollider.node.group == 'hero'){
