@@ -92,11 +92,13 @@ export default class Hero extends cc.Component {
 
     public moveLeft(){
         this.accLeft = true;
+        this.accRight = false;
         this.playLeftAnimation();
     }
 
     public moveRight(){
         this.accRight = true;
+        this.accLeft = false;
         this.playRightAnimation();
     }
 
