@@ -34,5 +34,4 @@ export default class Pipline extends cc.Component {
 
     }
 
-    // update (dt) {}
 }

@@ -35,5 +35,4 @@ export default class FlowerEnemy extends cc.Component {
 
         this.node.runAction(seq);
     }
-    // update (dt) {}
 }

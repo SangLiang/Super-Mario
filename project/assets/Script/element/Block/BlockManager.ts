@@ -147,5 +147,4 @@ export default class BlockManager extends cc.Component {
         this.ani.play('block_empty');
     }
 
-    // update (dt) {}
 }

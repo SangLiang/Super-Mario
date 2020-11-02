@@ -1,5 +1,5 @@
 {
-  "ver": "2.3.3",
+  "ver": "2.3.5",
   "uuid": "8295529f-5acb-4b52-ae6d-e7f9e17e98d1",
   "type": "sprite",
   "wrapMode": "clamp",
@@ -7,6 +7,8 @@
   "premultiplyAlpha": false,
   "genMipmaps": false,
   "packable": true,
+  "width": 91,
+  "height": 91,
   "platformSettings": {},
   "subMetas": {
     "enemy1_run": {
